@@ -5,24 +5,26 @@ import { Link } from 'react-router-dom'
 import { logout } from '../store'
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <h1>Happy Router</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
+  <div className='navbar'>
+    <Link to='/home'>
+      <img id='logo' src='/images/logo-nowords.png'/>
+    </Link>
+    <img id='logo-name' src='/images/logo-words.png'/>
+    {isLoggedIn ? (
+    <nav className='login'>
+      <Link to="/home">Home</Link>
+      <span className="straight-bar"> | </span>
+      <a href="#" onClick={handleClick}>
+        Logout
+      </a>
     </nav>
-    <hr />
+    ) : (
+    <nav className='login'>
+      <Link to="/login">Login</Link>
+      <span className="straight-bar"> | </span>
+      <Link to="/signup">Sign Up</Link>
+    </nav>
+    )}
   </div>
 )
 
