@@ -7,7 +7,7 @@ import Routes from './routes'
 const App = () => {
   return (
     <div>
-      <div id="full-height">
+      <div id='full-height'>
         <Navbar />
         <Routes />
       </div>

@@ -12,7 +12,7 @@ a {
 
 .navbar {
   height: 50px;
-  font-size: 12px;
+  font-size: 17px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -33,7 +33,7 @@ a {
 }
 
 #logo-name {
-  width: 150px;
+  width: 160px;
   height: 25px;
 }
 
@@ -42,9 +42,9 @@ nav.login {
   margin: auto 5px auto auto;
 }
 
-.map-display {
-  padding: 100px;
-  text-align: center;
+#map {
+  width: 100vw;
+  height: calc(100vh - 100px);
 }
 
 .footer {
