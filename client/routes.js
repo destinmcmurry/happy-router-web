@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Login, Signup, UserHome, Home } from './components'
+import { Login, Signup, Account, Home } from './components'
 import { me } from './store'
 import mapboxgl from 'mapbox-gl';
 
@@ -17,13 +17,6 @@ import mapboxgl from 'mapbox-gl';
 class Routes extends Component {
   componentDidMount () {
     this.props.loadInitialData()
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZGVzdGlubWNtdXJycnkiLCJhIjoiY2plenRxaGw3MGdsNTJ3b2htMGRydWc3aiJ9.ycslnjgv2J9VZGZHT8EoIw';
-    new mapboxgl.Map({
-      container: 'map',
-      center: [-73.963, 40.688,],
-      zoom: 12.25,
-      style: 'mapbox://styles/mapbox/streets-v10'
-    });
   }
 
   render () {
@@ -31,18 +24,16 @@ class Routes extends Component {
 
     return (
       <Switch>
-        {/* Routes placed here are available to all visitors */}
+        <Route path='/home' component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         {
           isLoggedIn &&
             <Switch>
-              {/* Routes placed here are only available after logging in */}
-              <Route path="/home" component={UserHome} />
+              <Route path="/account" component={Account} />
             </Switch>
         }
-        {/* Displays our Login component as a fallback */}
-        <Route component={Home} />
+        <Route component={Login} />
       </Switch>
     )
   }

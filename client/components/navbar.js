@@ -9,10 +9,12 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
     <Link to='/home'>
       <img id='logo' src='/images/logo-nowords.png'/>
     </Link>
-    <img id='logo-name' src='/images/logo-words.png'/>
+    <Link to='/home'>
+      <img id='logo-name' src='/images/logo-words.png'/>   
+    </Link>
     {isLoggedIn ? (
     <nav className='login'>
-      <Link to="/home">Home</Link>
+      <Link to="/account">Account</Link>
       <span className="straight-bar"> | </span>
       <a href="#" onClick={handleClick}>
         Logout
