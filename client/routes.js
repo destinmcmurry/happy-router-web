@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Login, Signup, Account, Home } from './components'
-import { me } from './store'
+import { me, getBars } from './store'
 import mapboxgl from 'mapbox-gl';
 
 /*
@@ -54,6 +54,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
       dispatch(me())
+      dispatch(getBars())
     }
   }
 }

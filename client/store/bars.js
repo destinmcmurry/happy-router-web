@@ -18,7 +18,7 @@ const GET_BARS = 'GET_BARS'
 ACTION CREATORS
 */
 
-const getBars = bars => ({ type: GET_BARS, bars })
+export const getBars = bars => ({ type: GET_BARS, bars })
 
 /*
 THUNKS
@@ -26,7 +26,7 @@ THUNKS
 
 // export const grabAllBars = () =>
 //   dispatch =>
-//     axios.get('/api/yelp/bars')
+//     axios.get('/api/bars')
 //       .then(res =>
 //         dispatch(getBars(res.data)))
 //       .catch(err => console.log(err))
