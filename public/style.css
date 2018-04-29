@@ -122,6 +122,21 @@ label {
   width: 100px;
 }
 
+/* .marker {
+  width: 30px;
+  height: 35px;
+  background-image: url('/images/marker.png');
+} */
+
+.result-container {
+  display: flex;
+  flex-flow: column;
+}
+
+.result-container img {
+  width : calc(25% - 20px);
+}
+
 .footer {
   display: flex;
   position: relative;

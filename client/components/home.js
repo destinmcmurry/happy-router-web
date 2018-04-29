@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setNewLocation, setWindow } from '../store';
 import history from '../history';
+// import { makeMarker } from './utils/marker';
 
 class Home extends Component {
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Login, Signup, Account, Home, Searching } from './components'
+import { Login, Signup, Account, Home, Searching, ResultList } from './components'
 import { me, getBars } from './store'
 import mapboxgl from 'mapbox-gl';
 
@@ -23,6 +23,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/searching" component={Searching} />
+        <Route path="/results" component={ResultList} />
         {
           isLoggedIn &&
             <Switch>
