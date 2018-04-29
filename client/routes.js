@@ -2,14 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Login, Signup, Account, Home } from './components'
+import { Login, Signup, Account, Home, Searching } from './components'
 import { me, getBars } from './store'
 import mapboxgl from 'mapbox-gl';
-
-/*
-  Mostly from boilermaker
-*/
-
 
 /**
  * COMPONENT
@@ -27,6 +22,7 @@ class Routes extends Component {
         <Route path='/home' component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/searching" component={Searching} />
         {
           isLoggedIn &&
             <Switch>

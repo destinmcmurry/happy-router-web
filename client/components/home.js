@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setNewLocation } from '../store';
+import { setNewLocation, setWindow } from '../store';
+import history from '../history';
 
 class Home extends Component {
 
@@ -9,8 +10,8 @@ class Home extends Component {
     displayFirst: true,
     start: 1500,
     end: 2200,
-    priceCap: 4,
-    types: [],
+    // priceCap: 4,
+    // types: [],
     disabledForLocation: true,
     disabledForTime: false
   }
@@ -62,11 +63,8 @@ class Home extends Component {
   // -------------------------------------------------
 
   handleSubmitTime = event => {
-    console.log(`user location: ${this.props.userLocation},
-user window: ${this.state.start} - ${this.state.end},
-Will filter bars based on these paramaters!`);
-    // need to rearrange userLocation to just be userOptions
-    // and will include location, window, price, and types
+    this.props.submitWindow(this.state.start, this.state.end);
+    history.push('/searching');
   }
 
   render() {
@@ -91,7 +89,7 @@ Will filter bars based on these paramaters!`);
         (
         <div className='options-container'>
         <h2>Choose your happy hour window!</h2>
-        <label>Military Style:</label>
+        <label>Military Style</label>
         <p>Begin: <input id='num-input' type='number' name='start' value={this.state.start} onChange={this.handleChange} min='0' max='2400' step='100' /></p>
         <p>End: <input id='num-input' type='number' name='end' value={this.state.end} onChange={this.handleChange} min='0' max='2400' step='100' /></p>
         <button disabled={this.state.disabledForTime} onClick={this.handleSubmitTime}>continue</button>
@@ -119,6 +117,9 @@ const mapDispatch = dispatch => {
       coords.push(x);
 
       dispatch(setNewLocation(coords))
+    },
+    submitWindow(start, end) {
+      dispatch(setWindow(start, end))
     }
   }
 }

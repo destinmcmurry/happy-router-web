@@ -101,6 +101,20 @@ label {
   width: 45px;
 }
 
+.searching-page {
+  display: flex;
+  margin: auto;
+  position: relative;
+  top: 200px;
+  flex-direction: column;
+  text-align: center;
+}
+
+#wheel {
+  height: 100px;
+  width: 100px;
+}
+
 .footer {
   display: flex;
   position: relative;
