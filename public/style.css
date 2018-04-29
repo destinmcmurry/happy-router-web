@@ -10,6 +10,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  padding: 3px;
+}
+
 .navbar {
   height: 50px;
   font-size: 17px;
@@ -17,6 +21,7 @@ a {
   flex-direction: row;
   align-items: center;
   background-color: #f9f9f9;
+  border-bottom: 1px solid #9dc9bfdb;
   padding: 5px 0 0 0;
 }
 
@@ -63,7 +68,6 @@ nav.login {
 .login-container div,
 .login-container button {
   text-align: center;
-  padding: 3px;
   margin: 10px;
 }
 
@@ -81,7 +85,7 @@ label {
 .options-container {
   display: flex;
   width: 45%;
-  height: 250px;
+  height: 270px;
   min-width: 200px;
   margin: auto;
   flex-direction: column;
@@ -112,7 +116,7 @@ label {
   display: flex;
   margin: auto;
   position: relative;
-  top: 200px;
+  top: 150px;
   flex-direction: column;
   text-align: center;
 }
@@ -130,11 +134,60 @@ label {
 
 .result-container {
   display: flex;
-  flex-flow: column;
+  flex-flow: row wrap;
+  min-width: 400px;
+}
+
+.result-container h2 {
+  margin: 45px 0 10px 20px ;
+}
+
+#map-view {
+  height: 50px;
+  width: 50px;
+  margin: 25px 10px 10px auto;
+  border-radius: 5px;
+}
+
+#map-view img {
+  margin: 5px 10px 10px auto;
+}
+
+.bottom-right-button {
+  margin: 0 20px 20px auto;
+  text-align: right;
+}
+
+.bottom-right-button button {
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.bottom-right-button img {
+  width: 40px;
+  height: 40px;
+}
+
+.list-item {
+  background-color: #f9f9f9;
+  border: 1px solid #9dc9bfdb;
+  border-radius: 3px;
+  display: inline-flex;
+  width: 100%;
+  margin: 15px;
+  padding: 10px;
 }
 
 .result-container img {
-  width : calc(25% - 20px);
+  width: 200px;
+  max-width: 100%; 
+  max-height: 200px; 
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.account-container {
+  padding: 10px;
 }
 
 .footer {

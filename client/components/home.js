@@ -32,8 +32,8 @@ class Home extends Component {
       [event.target.name] : event.target.value
     })
     // make functions that will verify if valid coords / time
-    // and use it here instead ----------------------
-    if (this.state.coords.includes(', ')) {
+    // and use here instead (or better yet just fix the input to take an address and regular time) ----------------------
+    if (+this.state.coords.includes(', ')) {
       this.state.disabledForLocation = false;
     }
     if (this.state.start < 0 || this.state.start > 2400 

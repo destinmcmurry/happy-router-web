@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import GifPlayer from 'react-gif-player'
+import history from '../history'
 
 const Searching = (props) => {
 
@@ -13,14 +14,25 @@ const Searching = (props) => {
       ? 
       (
       <div className='searching-page'>
-        <GifPlayer id='wheel' gif='https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif' autoplay={true}/>
-        <p>{`Searching for happy hours near coordinates [${userLocation[1]}, ${userLocation[0]}] and between the window of ${userStart} and ${userEnd}`}</p>
+        {
+        setTimeout(()=>history.push('/results-map'), 3000) &&
+          <div>
+            <GifPlayer id='wheel' gif='https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif' autoplay={true}/>
+            <p>{`Searching for happy hours near coordinates [${userLocation[1]}, ${userLocation[0]}] and between the window of ${userStart} and ${userEnd}`}</p>
+          </div>
+        }
       </div>
       )
       : 
       (
       <div className='searching-page'>
-        <p>Sorry, something went wrong :/</p>
+        {
+          setTimeout(()=>history.push('/home'), 5000) &&
+          <div>
+            <img src='/images/sad-face.png'/>
+            <p>sorry, something went wrong</p>
+          </div>
+        }
       </div>
       )
       }

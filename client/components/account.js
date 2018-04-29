@@ -7,8 +7,8 @@ export const Account = (props) => {
   const {email} = props
 
   return (
-    <div>
-      <h3>Welcome, {email}</h3>
+    <div className='account-container'>
+      <h3>Saved Routes</h3>
       {/* Once users can save routes, saved routes will render here, and if none, then the following message will render */}
       <small>no saved routes yet</small>
     </div>
