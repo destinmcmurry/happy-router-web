@@ -11,7 +11,7 @@ const ResultList = (props) => {
     <div>
       <div className='result-container'>
         <h2>Route Details</h2>
-        <button id='map-view' onClick={()=> history.push('/results-map')}><img src='/images/map-view.png'/></button>
+        <button id='toggle-view' onClick={()=> history.push('/results-map')}><img src='/images/map-view.png'/></button>
         {
           bars.map(bar =>
             <div key={bar.id} className='list-item'>

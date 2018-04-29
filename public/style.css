@@ -142,14 +142,14 @@ label {
   margin: 45px 0 10px 20px ;
 }
 
-#map-view {
+#toggle-view {
   height: 50px;
   width: 50px;
   margin: 25px 10px 10px auto;
   border-radius: 5px;
 }
 
-#map-view img {
+#toggle-view img {
   margin: 5px 10px 10px auto;
 }
 
@@ -198,6 +198,7 @@ label {
   background-color: #f9f9f9;
   padding: 5px 0 0 0;
   color: #61a2a8;
+  border-top: 1px solid #9dc9bfdb;
 }
 
 .footer p {

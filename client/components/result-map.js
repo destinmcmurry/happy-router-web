@@ -12,6 +12,32 @@ class ResultMap extends Component {
       zoom: 14.75,
       style: 'mapbox://styles/mapbox/streets-v10'
     });
+
+    
+    // map.on("load", function () {
+    //   /* Image: An image is loaded and added to the map. */
+    //   map.loadImage("https://i.imgur.com/MK4NUzI.png", function(error, image) {
+    //       if (error) throw error;
+    //       map.addImage("custom-marker", image);
+    //       /* Style layer: A style layer ties together the source and image and specifies how they are displayed on the map. */
+    //       map.addLayer({
+    //         id: "markers",
+    //         type: "symbol",
+    //         /* Source: A data source specifies the geographic coordinate where the image marker gets placed. */
+    //         source: {
+    //           type: "geojson",
+    //           data: {
+    //             type: "FeatureCollection",
+    //             features:[{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.94531101906043,40.82003451451456]}}]}
+    //         },
+    //         layout: {
+    //           "icon-image": "custom-marker",
+    //         }
+    //       });
+    //     });
+    // });
+    
+    
   }
 
   render() {
@@ -19,6 +45,9 @@ class ResultMap extends Component {
     return (
       <div>
         <div id='map'></div>
+        <div className='result-container'>
+          <button id='toggle-view' onClick={()=> history.push('/results-list')}><img src='/images/list-view.png'/></button>
+        </div>
       </div>
     )
   }
