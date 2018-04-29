@@ -14,7 +14,7 @@ const Searching = (props) => {
       (
       <div className='searching-page'>
         <GifPlayer id='wheel' gif='https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif' autoplay={true}/>
-        <p>{`Searching for happy hours near coordinates [${userLocation[1]}, ${userLocation[0]}] and between the hours of ${userStart} and ${userEnd}`}</p>
+        <p>{`Searching for happy hours near coordinates [${userLocation[1]}, ${userLocation[0]}] and between the window of ${userStart} and ${userEnd}`}</p>
       </div>
       )
       : 

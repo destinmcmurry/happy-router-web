@@ -42,6 +42,12 @@ nav.login {
   margin: auto 5px auto auto;
 }
 
+#welcome {
+  display: flex;
+  font-size: 12px;
+  margin: auto;
+}
+
 .login-container {
   display: flex;
   width: 50%;
@@ -85,6 +91,7 @@ label {
   background-color: #f9f9f9;
   border: 1px solid #9dc9bfdb;
   border-radius: 3px;
+  opacity: .95;
 }
 
 .options-container * {

@@ -58,7 +58,7 @@ class Home extends Component {
     this.setState({ 
       displayFirst : false
     })
-    this.props.submitCoords('40.688, -73.963');
+    this.props.submitCoords('40.705, -74.009');
   }
   // -------------------------------------------------
 
