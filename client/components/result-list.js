@@ -33,9 +33,9 @@ const ResultList = (props) => {
           <div className='bottom-right-button'>
             <div><button id='in-list' className='back-to-start' onClick={()=> history.push('/home')}>create new route</button></div>
             {
-              props.isLoggedIn && <button><img src='/images/star.png'/></button>
+              props.isLoggedIn && <button onClick={()=>alert('Your route has been starred! ...(but not actually, lol)')}><img src='/images/star.png'/></button>
             }
-            <button><img src='/images/share.png'/></button>
+            <button onClick={()=>alert('ideally when clicked, the share button would text a restful link to a phone number that the user would input 💁🏼‍♀️')}><img src='/images/share.png'/></button>
           </div>
         </div>
       )

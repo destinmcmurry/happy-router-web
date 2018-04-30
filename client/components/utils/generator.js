@@ -29,7 +29,8 @@ const isNearby = (userCoords, barCoords) => {
   return (Math.abs(userCoords[0]-barCoords[0]) < .01) && (Math.abs(userCoords[1]-barCoords[1]) < .01)
 }
 
-// not actually doing anything right now
+// not actually doing anything right now, and also will need to get day of week
+// and take out all of the hard coded M's
 const isWithinWindow = (userWindow, barWindow) => {
   return true;
 }
