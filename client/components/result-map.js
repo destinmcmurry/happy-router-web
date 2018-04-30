@@ -1,42 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import history from '../history';
+import makeBarMarker from './utils/marker';
 
 class ResultMap extends Component {
 
   componentDidMount() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGVzdGlubWNtdXJycnkiLCJhIjoiY2plenRxaGw3MGdsNTJ3b2htMGRydWc3aiJ9.ycslnjgv2J9VZGZHT8EoIw';
-    new mapboxgl.Map({
+    const map = new mapboxgl.Map({
       container: 'map',
-      center: this.props.userLocation,
+      center: this.props.userLocation || [-74.009, 40.705],
       zoom: 14.75,
       style: 'mapbox://styles/mapbox/streets-v10'
     });
-
     
-    // map.on("load", function () {
-    //   /* Image: An image is loaded and added to the map. */
-    //   map.loadImage("https://i.imgur.com/MK4NUzI.png", function(error, image) {
-    //       if (error) throw error;
-    //       map.addImage("custom-marker", image);
-    //       /* Style layer: A style layer ties together the source and image and specifies how they are displayed on the map. */
-    //       map.addLayer({
-    //         id: "markers",
-    //         type: "symbol",
-    //         /* Source: A data source specifies the geographic coordinate where the image marker gets placed. */
-    //         source: {
-    //           type: "geojson",
-    //           data: {
-    //             type: "FeatureCollection",
-    //             features:[{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.94531101906043,40.82003451451456]}}]}
-    //         },
-    //         layout: {
-    //           "icon-image": "custom-marker",
-    //         }
-    //       });
-    //     });
-    // });
-    
+    map.on('load', () => {
+      map.loadImage('/images/marker.png', (error, image) => {
+          if (error) throw error;
+          map.addImage('you-are-here', image);
+          map.addLayer({
+            id: ''+this.props.userLocation+'-marker',
+            type: 'symbol',
+            source: {
+              type: 'geojson',
+              data: {
+                type: 'FeatureCollection',
+                features:[{
+                  'type':'Feature',
+                  'geometry':{'type':'Point',
+                  'coordinates': this.props.userLocation }}]}
+            },
+            layout: {
+              'icon-image': 'you-are-here',
+            }
+          });
+        });
+        // hard coded coords for now, 
+        // will replace with actual results
+        [(this.props.userLocation || [-74.009, 40.705]), [-74.010425, 40.705345], [-74.011075, 40.703261], [-74.006976, 40.706262]].forEach(coords => makeBarMarker(map, coords))
+      });
     
   }
 

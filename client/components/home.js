@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setNewLocation, setWindow } from '../store';
 import history from '../history';
-// import { makeMarker } from './utils/marker';
 
 class Home extends Component {
 
@@ -21,7 +20,7 @@ class Home extends Component {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGVzdGlubWNtdXJycnkiLCJhIjoiY2plenRxaGw3MGdsNTJ3b2htMGRydWc3aiJ9.ycslnjgv2J9VZGZHT8EoIw';
     new mapboxgl.Map({
       container: 'map',
-      center: [-73.963, 40.688] || this.props.userLocation,
+      center: this.props.userLocation || [-73.963, 40.688],
       zoom: 12.25,
       style: 'mapbox://styles/mapbox/streets-v10'
     });
@@ -53,7 +52,7 @@ class Home extends Component {
     this.props.submitCoords(this.state.coords);
   }
 
-  // placeholder handler until I can use geolocating
+  // placeholder handler (use fullstack) until I can use geolocating
   // just so i don't have to input every time -------
   handleAllow = event => {
     this.setState({ 
@@ -90,7 +89,7 @@ class Home extends Component {
         (
         <div className='options-container'>
         <h2>Choose your happy hour window!</h2>
-        <label>Military Style</label>
+        <small>military style</small>
         <p>Begin: <input id='num-input' type='number' name='start' value={this.state.start} onChange={this.handleChange} min='0' max='2400' step='100' /></p>
         <p>End: <input id='num-input' type='number' name='end' value={this.state.end} onChange={this.handleChange} min='0' max='2400' step='100' /></p>
         <button disabled={this.state.disabledForTime} onClick={this.handleSubmitTime}>continue</button>

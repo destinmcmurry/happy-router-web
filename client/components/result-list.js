@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import history from '../history';
-// import { shuffle } from './utils/shuffle';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+// import { generateRoute } from './utils/generator';
 
 const ResultList = (props) => {
   
@@ -18,10 +20,9 @@ const ResultList = (props) => {
               <img src={bar.image}/>
               <div>
                 <h4>{bar.name}</h4>
-                <p>price: {bar.price}</p>
                 <p>rating: {bar.rating}</p>
                 <p>reviews: {bar.reviews}</p>
-                <small>see more</small>
+                <Link to={`/results-list/single-result/${bar.id}`}><small>see more</small></Link>
               </div>
             </div>
           )
@@ -44,4 +45,4 @@ const mapState = (state) => {
   }
 }
 
-export default connect(mapState)(ResultList)
+export default withRouter(connect(mapState)(ResultList))

@@ -3,7 +3,7 @@ INITIAL STATE
 */
 
 const initialState = {
-  userLocation: [-73.963, 40.688],
+  userLocation: null,
   userStart: null,
   userEnd: null
 }
