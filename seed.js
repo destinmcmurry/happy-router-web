@@ -234,6 +234,201 @@ const bars = [
         details: DETAILS_BOTH 
       }
     }
+  },
+  {
+    id: 7,
+    name: 'Lenita',
+    type: ['Mexican', 'Cocktail Bars'],
+    location: [-74.009744, 40.703982],
+    image: '/images/lenita.jpg',
+    price: '$$',
+    rating: 4,
+    reviews: 45,
+    website: 'https://www.lenitanyc.com/',
+    happyHours: {
+      M: {
+        start: 1700,
+        end: 1900,
+        details: DETAILS_BOTH 
+        },
+      TU: {
+        start: 1100,
+        end: 2300,
+        details: 'taco tuesday'
+        },
+      W: {
+        start: 1700,
+        end: 1900,
+        details: DETAILS_BOTH 
+        },
+      TH: {
+        start: 1700,
+        end: 1900,
+        details: DETAILS_BOTH 
+      },
+      F: {
+        start: 1700,
+        end: 1900,
+        details: DETAILS_BOTH 
+      }
+    }
+  },
+  {
+    id: 8,
+    name: 'The Wooly Public',
+    type: ['American(New)', 'Cocktail Bars', 'Wine Bars'],
+    location: [-74.008416, 40.712316],
+    image: '/images/wooly.jpg',
+    price: '$$',
+    rating: 4,
+    reviews: 46,
+    website: 'https://www.thewoolypublic.com/',
+    happyHours: {
+      M: {
+        start: 1130,
+        end: 1800,
+        details: '$5 select drafts, $7 select wines, and $10 public punch'
+        },
+      TU: {
+        start: 1130,
+        end: 2300,
+        details: '$5 select drafts, $7 select wines, and $10 public punch'
+        },
+      W: {
+        start: 1130,
+        end: 1800,
+        details: '$5 select drafts, $7 select wines, and $10 public punch'
+        },
+      TH: {
+        start: 1130,
+        end: 1800,
+        details: '$5 select drafts, $7 select wines, and $10 public punch'
+      },
+      F: {
+        start: 1130,
+        end: 1800,
+        details: '$5 select drafts, $7 select wines, and $10 public punch'
+      }
+    }
+  },
+  {
+    id: 9,
+    name: 'Mad Dog & Beans',
+    type: ['Mexican', 'Bars'],
+    location: [-74.010205, 40.704176],
+    image: '/images/mad-dog.jpg',
+    price: '$$',
+    rating: 3.5,
+    reviews: 688,
+    website: 'https://www.maddogandbeans.com/',
+    happyHours: {
+      M: {
+        start: 1430,
+        end: 1730,
+        details: '$6 margaritas and beer'
+        },
+      TU: {
+        start: 1430,
+        end: 1730,
+        details: '$6 margaritas and beer'
+        },
+      W: {
+        start: 1430,
+        end: 1730,
+        details: '$6 margaritas and beer'
+        },
+      TH: {
+        start: 1430,
+        end: 1730,
+        details: '$6 margaritas and beer'
+      }
+    }
+  },
+  {
+    id: 10,
+    name: 'The Dead Rabbit',
+    type: ['Cocktail Bars'],
+    location: [-74.011029, 40.703286],
+    image: '/images/dead-rabbit.jpg',
+    price: '$$',
+    rating: 4,
+    reviews: 1230,
+    website: 'https://www.deadrabbitnyc.com/',
+    happyHours: {
+      M: {
+        start: 1700,
+        end: 1900,
+        details: '$1 oysters and $7 specialty cocktails'
+        },
+      TU: {
+        start: 1700,
+        end: 1900,
+        details: '$1 oysters and $7 specialty cocktails'
+        },
+      W: {
+        start: 1700,
+        end: 1900,
+        details: '$1 oysters and $7 specialty cocktails'
+        },
+      TH: {
+        start: 1700,
+        end: 1900,
+        details: '$1 oysters and $7 specialty cocktails'
+      },
+      F: {
+        start: 1700,
+        end: 1900,
+        details: '$1 oysters and $7 specialty cocktails'
+      }
+    }
+  },
+  {
+    id: 11,
+    name: 'Trading Post',
+    type: ['American(Traditional)', 'Bars', 'Seafood'],
+    location: [-74.004195, 40.705997],
+    image: '/images/trading-post.jpg',
+    price: '$$',
+    rating: 4,
+    reviews: 294,
+    website: 'https://www.tradingpostnyc.com/',
+    happyHours: {
+      M: {
+        start: 1700,
+        end: 1900,
+        details: '$5 drafts, $7 wines, and $8 French martinis and cosmos'
+        },
+      TU: {
+        start: 1700,
+        end: 1900,
+        details: '$5 drafts, $7 wines, and $8 French martinis and cosmos'
+        },
+      W: {
+        start: 1700,
+        end: 1900,
+        details: '$5 drafts, $7 wines, and $8 French martinis and cosmos'
+        },
+      TH: {
+        start: 1700,
+        end: 1900,
+        details: '$5 drafts, $7 wines, and $8 French martinis and cosmos'
+      },
+      F: {
+        start: 1700,
+        end: 1900,
+        details: '$5 drafts, $7 wines, and $8 French martinis and cosmos'
+      },
+      SA: {
+        start: 1200,
+        end: 2000,
+        details: '$5 drafts, $7 wines, and $8 French martinis and cosmos'
+        },
+      SU: {
+        start: 1200,
+        end: 2300,
+        details: '$5 drafts, $7 wines, and $8 French martinis and cosmos'
+        }
+    }
   }
 ]
 

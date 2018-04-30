@@ -19,7 +19,7 @@ const SingleResult = (props) => {
             <p>price: {bar.price}</p>
             <p>rating: {bar.rating}</p>
             <p>reviews: {bar.reviews}</p>
-            <p>happy hour: {bar.happyHours.M.details}</p>
+            <p>type: {bar.type[0]}</p>
             <small>website: {bar.website}</small>
           </div>
         </div>

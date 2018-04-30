@@ -4,7 +4,7 @@ const generateRoute = (bars, loc, start, end) => {
 
   // use helper functions to filter bars (rn just returning all)
   const filteredBars = bars.filter(bar => {
-    return isWithinOneMile(loc, bar.location) &&
+    return isNearby(loc, bar.location) &&
     isWithinWindow([start, end], [bar.happyHours.M.start, bar.happyHours.M.end])
   })
 
@@ -24,9 +24,9 @@ const generateRoute = (bars, loc, start, end) => {
   return indexes.map(i => filteredBars[i])
 }
 
-
-const isWithinOneMile = (userCoords, barCoords) => {
-  return true;
+// not the best but eh
+const isNearby = (userCoords, barCoords) => {
+  return (Math.abs(userCoords[0]-barCoords[0]) < .01) && (Math.abs(userCoords[1]-barCoords[1]) < .01)
 }
 
 const isWithinWindow = (userWindow, barWindow) => {

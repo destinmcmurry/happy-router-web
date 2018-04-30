@@ -13,7 +13,7 @@ class ResultMap extends Component {
     const map = new mapboxgl.Map({
       container: 'map',
       center: userLocation || [-74.009, 40.705],
-      zoom: 14.75,
+      zoom: 14,
       style: 'mapbox://styles/mapbox/streets-v10'
     });
     
@@ -39,16 +39,14 @@ class ResultMap extends Component {
           });
         });
         
-        [(userLocation || [-74.009, 40.705]), [-74.010425, 40.705345], [-74.011075, 40.703261], [-74.006976, 40.706262]].forEach(coords => makeBarMarker(map, coords))
+        // [(userLocation || [-74.009, 40.705]), [-74.010425, 40.705345], [-74.011075, 40.703261], [-74.006976, 40.706262]].forEach(coords => makeBarMarker(map, coords))
 
-
-        // non hard coded marker setter :
         
-        // const coordsArr = [(userLocation || [-74.009, 40.705])];
-        // barsToMap.forEach(bar => {
-        //   coordsArr.push(bar.location)
-        // });
-        // coordsArr.forEach(coords => makeBarMarker(map, coords))
+        const coordsArr = [(userLocation || [-74.009, 40.705])];
+        barsToMap.forEach(bar => {
+          coordsArr.push(bar.location)
+        });
+        coordsArr.forEach(coords => makeBarMarker(map, coords))
         
       });
     

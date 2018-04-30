@@ -19,8 +19,7 @@ const ResultList = (props) => {
               <img src={bar.image}/>
               <div>
                 <h4>{bar.name}</h4>
-                <p>rating: {bar.rating}</p>
-                <p>reviews: {bar.reviews}</p>
+                <p>{bar.happyHours.M.details}</p>
                 <Link to={`/results-list/single-result/${bar.id}`}><small>see more</small></Link>
               </div>
             </div>
