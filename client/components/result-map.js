@@ -9,44 +9,81 @@ class ResultMap extends Component {
 
     const { userLocation, barsToMap } = this.props;
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZGVzdGlubWNtdXJycnkiLCJhIjoiY2plenRxaGw3MGdsNTJ3b2htMGRydWc3aiJ9.ycslnjgv2J9VZGZHT8EoIw';
-    const map = new mapboxgl.Map({
-      container: 'map',
-      center: userLocation,
-      zoom: 14,
-      style: 'mapbox://styles/mapbox/streets-v10'
-    });
-    
-    map.on('load', () => {
-      map.loadImage('/images/marker.png', (error, image) => {
-          if (error) throw error;
-          map.addImage('you-are-here', image);
-          map.addLayer({
-            id: ''+userLocation+'-marker',
-            type: 'symbol',
-            source: {
-              type: 'geojson',
-              data: {
-                type: 'FeatureCollection',
-                features:[{
-                  'type':'Feature',
-                  'geometry':{'type':'Point',
-                  'coordinates': userLocation }}]}
-            },
-            layout: {
-              'icon-image': 'you-are-here',
-            }
-          });
-        });
-        
-        const coordsArr = [];
-        barsToMap.forEach(bar => {
-          coordsArr.push(bar.location)
-        });
-        coordsArr.forEach(coords => makeBarMarker(map, coords))
-        
+    if (barsToMap) { 
+
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZGVzdGlubWNtdXJycnkiLCJhIjoiY2plenRxaGw3MGdsNTJ3b2htMGRydWc3aiJ9.ycslnjgv2J9VZGZHT8EoIw';
+      const map = new mapboxgl.Map({
+        container: 'map',
+        center: userLocation,
+        zoom: 14,
+        style: 'mapbox://styles/mapbox/streets-v10'
       });
-    
+      
+      map.on('load', () => {
+        map.loadImage('/images/marker.png', (error, image) => {
+            if (error) throw error;
+            map.addImage('you-are-here', image);
+            map.addLayer({
+              id: ''+userLocation+'-marker',
+              type: 'symbol',
+              source: {
+                type: 'geojson',
+                data: {
+                  type: 'FeatureCollection',
+                  features:[{
+                    'type':'Feature',
+                    'geometry':{'type':'Point',
+                    'coordinates': userLocation }}]}
+              },
+              layout: {
+                'icon-image': 'you-are-here',
+              }
+            });
+          });
+          
+          const coordsArr = [];
+          barsToMap.forEach(bar => {
+            coordsArr.push(bar.location)
+          });
+          coordsArr.forEach(coords => makeBarMarker(map, coords))
+
+          map.addLayer({
+            'id': 'route',
+            'type': 'line',
+            'source': {
+                'type': 'geojson',
+                'data': {
+                    'type': 'Feature',
+                    'properties': {},
+                    'geometry': {
+                        'type': 'LineString',
+                        'coordinates': [userLocation, ...coordsArr]
+                      }
+                    }
+                },
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                  'line-color': '#72ccb5',
+                  'line-width': {
+                  'base': 1.5,
+                  'stops': [
+                      [14, 5],
+                      [18, 20],
+                  ],
+              },
+                  'line-dasharray': [0.5, 1.5]
+              }
+            });
+
+        });
+      
+    } else {
+      history.push('/results-list')
+    }
+
   }
 
   render() {

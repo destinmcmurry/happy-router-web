@@ -6,7 +6,7 @@ const initialState = {
   userLocation: null,
   userStart: null,
   userEnd: null,
-  route: []
+  route: null
 }
 
 /*
