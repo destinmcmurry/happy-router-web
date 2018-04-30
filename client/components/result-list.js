@@ -3,11 +3,16 @@ import { connect } from 'react-redux';
 import history from '../history';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-// import { generateRoute } from './utils/generator';
+import generateRoute from './utils/generator';
 
 const ResultList = (props) => {
   
   const { bars } = props.bars;
+  const { loc, start, end } = props;
+
+  if (!bars) return (<div></div>);
+
+  const selectedBars = generateRoute(bars, loc, start, end);
 
   return (
     <div>
@@ -15,7 +20,7 @@ const ResultList = (props) => {
         <h2>Route Details</h2>
         <button id='toggle-view' onClick={()=> history.push('/results-map')}><img src='/images/map-view.png'/></button>
         {
-          bars.map(bar =>
+          selectedBars.map(bar =>
             <div key={bar.id} className='list-item'>
               <img src={bar.image}/>
               <div>
@@ -41,6 +46,9 @@ const ResultList = (props) => {
 const mapState = (state) => {
   return {
     bars: state.bars || [],
+    loc: state.userOptions.userLocation,
+    start: state.userOptions.start,
+    end: state.userOptions.end,
     isLoggedIn: !!state.user.id
   }
 }

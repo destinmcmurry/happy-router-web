@@ -15,7 +15,7 @@ const Searching = (props) => {
       (
       <div className='searching-page'>
         {
-        setTimeout(()=>history.push('/results-map'), 3000) &&
+        setTimeout(()=>history.push('/results-list'), 3000) &&
           <div>
             <GifPlayer id='wheel' gif='https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif' autoplay={true}/>
             <p>{`Searching for happy hours near coordinates [${userLocation[1]}, ${userLocation[0]}] and between the window of ${userStart} and ${userEnd}`}</p>
