@@ -1,6 +1,6 @@
 # happy-router-web
 
-a web app that when given a location and time frame generates a route of local happy hours! 
+a web app that when given a location and time frame generates a route of nearby happy hours! 
 
 # future features 
 
