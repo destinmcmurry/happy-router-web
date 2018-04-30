@@ -194,6 +194,25 @@ label {
   margin: 15px;
 }
 
+.back-to-start {
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.back-to-start#in-map {
+  position: absolute;
+  bottom: 45px;
+  left: 30px;
+}
+
+.back-to-start#in-list {
+  display: flex;
+  align-self: left;
+  margin: 0 auto 20px 20px;
+  text-align: left;
+}
+
 .footer {
   display: flex;
   position: relative;

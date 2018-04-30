@@ -3,16 +3,10 @@ import { connect } from 'react-redux';
 import history from '../history';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import generateRoute from './utils/generator';
 
 const ResultList = (props) => {
-  
-  const { bars } = props.bars;
-  const { loc, start, end } = props;
 
-  if (!bars) return (<div></div>);
-
-  const selectedBars = generateRoute(bars, loc, start, end);
+  const { route } = props;
 
   return (
     <div>
@@ -20,7 +14,7 @@ const ResultList = (props) => {
         <h2>Route Details</h2>
         <button id='toggle-view' onClick={()=> history.push('/results-map')}><img src='/images/map-view.png'/></button>
         {
-          selectedBars.map(bar =>
+          route.map(bar =>
             <div key={bar.id} className='list-item'>
               <img src={bar.image}/>
               <div>
@@ -34,6 +28,7 @@ const ResultList = (props) => {
         }
       </div>
       <div className='bottom-right-button'>
+        <div><button id='in-list' className='back-to-start' onClick={()=> history.push('/home')}>create new route</button></div>
         {
           props.isLoggedIn && <button><img src='/images/star.png'/></button>
         }
@@ -45,10 +40,7 @@ const ResultList = (props) => {
 
 const mapState = (state) => {
   return {
-    bars: state.bars || [],
-    loc: state.userOptions.userLocation,
-    start: state.userOptions.start,
-    end: state.userOptions.end,
+    route: state.userOptions.route,
     isLoggedIn: !!state.user.id
   }
 }

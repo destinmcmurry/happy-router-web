@@ -2,50 +2,69 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import GifPlayer from 'react-gif-player'
 import history from '../history'
+import { setNewRoute } from '../store'
+import generateRoute from './utils/generator'
 
-const Searching = (props) => {
+class Searching extends Component {
 
-  const { userLocation, userStart, userEnd } = props;
+  componentDidMount() {
+    const { bars } = this.props.bars;
+    const { loc, start, end, setRoute } = this.props;
+    const selectedBars = generateRoute(bars, loc, start, end);
+    setRoute(selectedBars);
+  }
   
-  return (
-    <div>
-      {
-      (userLocation && userStart && userEnd)
-      ? 
-      (
-      <div className='searching-page'>
+  render() {
+    const { loc, start, end, setRoute } = this.props;
+    return (
+      <div>
         {
-        setTimeout(()=>history.push('/results-list'), 3000) &&
-          <div>
-            <GifPlayer id='wheel' gif='https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif' autoplay={true}/>
-            <p>{`Searching for happy hours near coordinates [${userLocation[1]}, ${userLocation[0]}] and between the window of ${userStart} and ${userEnd}`}</p>
-          </div>
+        (loc && start && end)
+        ? 
+        (
+        <div className='searching-page'>
+          {
+          setTimeout(()=>history.push('/results-map'), 3000) &&
+            <div>
+              <GifPlayer id='wheel' gif='https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif' autoplay={true}/>
+              <p>{`Searching for happy hours near coordinates [${loc[1]}, ${loc[0]}] and between the window of ${start} and ${end}`}</p>
+            </div>
+          }
+        </div>
+        )
+        : 
+        (
+        <div className='searching-page'>
+          {
+            setTimeout(()=>history.push('/home'), 5000) &&
+            <div>
+              <img src='/images/sad-face.png'/>
+              <p>sorry, something went wrong</p>
+            </div>
+          }
+        </div>
+        )
         }
       </div>
-      )
-      : 
-      (
-      <div className='searching-page'>
-        {
-          setTimeout(()=>history.push('/home'), 5000) &&
-          <div>
-            <img src='/images/sad-face.png'/>
-            <p>sorry, something went wrong</p>
-          </div>
-        }
-      </div>
-      )
-      }
-    </div>
-  )
+    )
+  }
 }
 
 const mapState = state => {
   return {
-    userLocation: state.userOptions.userLocation,
-    userStart: state.userOptions.userStart,
-    userEnd: state.userOptions.userEnd
+    bars: state.bars || [],
+    loc: state.userOptions.userLocation,
+    start: state.userOptions.userStart,
+    end: state.userOptions.userEnd
   }
 }
 
-export default connect(mapState)(Searching);
+const mapDispatch = dispatch => {
+  return {
+    setRoute(bars) {
+      dispatch(setNewRoute(bars))
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(Searching);

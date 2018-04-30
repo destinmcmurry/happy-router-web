@@ -6,10 +6,13 @@ import makeBarMarker from './utils/marker';
 class ResultMap extends Component {
 
   componentDidMount() {
+
+    const { userLocation, barsToMap } = this.props;
+
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGVzdGlubWNtdXJycnkiLCJhIjoiY2plenRxaGw3MGdsNTJ3b2htMGRydWc3aiJ9.ycslnjgv2J9VZGZHT8EoIw';
     const map = new mapboxgl.Map({
       container: 'map',
-      center: this.props.userLocation || [-74.009, 40.705],
+      center: userLocation || [-74.009, 40.705],
       zoom: 14.75,
       style: 'mapbox://styles/mapbox/streets-v10'
     });
@@ -19,7 +22,7 @@ class ResultMap extends Component {
           if (error) throw error;
           map.addImage('you-are-here', image);
           map.addLayer({
-            id: ''+this.props.userLocation+'-marker',
+            id: ''+userLocation+'-marker',
             type: 'symbol',
             source: {
               type: 'geojson',
@@ -28,28 +31,37 @@ class ResultMap extends Component {
                 features:[{
                   'type':'Feature',
                   'geometry':{'type':'Point',
-                  'coordinates': this.props.userLocation }}]}
+                  'coordinates': userLocation }}]}
             },
             layout: {
               'icon-image': 'you-are-here',
             }
           });
         });
-        // hard coded coords for now, 
-        // will replace with actual results
-        [(this.props.userLocation || [-74.009, 40.705]), [-74.010425, 40.705345], [-74.011075, 40.703261], [-74.006976, 40.706262]].forEach(coords => makeBarMarker(map, coords))
+        
+        [(userLocation || [-74.009, 40.705]), [-74.010425, 40.705345], [-74.011075, 40.703261], [-74.006976, 40.706262]].forEach(coords => makeBarMarker(map, coords))
+
+
+        // non hard coded marker setter :
+        
+        // const coordsArr = [(userLocation || [-74.009, 40.705])];
+        // barsToMap.forEach(bar => {
+        //   coordsArr.push(bar.location)
+        // });
+        // coordsArr.forEach(coords => makeBarMarker(map, coords))
+        
       });
     
   }
 
   render() {
-    const { bars } = this.props.bars;
     return (
       <div>
         <div id='map'></div>
         <div className='result-container'>
           <button id='toggle-view' onClick={()=> history.push('/results-list')}><img src='/images/list-view.png'/></button>
         </div>
+        <button className='back-to-start' id='in-map' onClick={()=> history.push('/home')}>back</button>
       </div>
     )
   }
@@ -58,8 +70,8 @@ class ResultMap extends Component {
 
 const mapState = (state) => {
   return {
-    bars: state.bars || [],
-    userLocation: state.userOptions.userLocation
+    userLocation: state.userOptions.userLocation,
+    barsToMap: state.userOptions.route
   }
 }
 
