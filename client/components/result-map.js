@@ -87,9 +87,26 @@ class ResultMap extends Component {
   }
 
   render() {
+
+    const { barsToMap } = this.props;
+
     return (
-      <div>
+      <div className='map-container'>
         <div id='map'></div>
+        {/*
+        <div className='thumbnail-container'>
+          <div className='thumbnail'>
+            <p>your location ></p>
+          </div>
+          {
+          barsToMap.map(bar =>
+            <div key={bar.id} className='thumbnail'>
+              <img src={bar.img}/>
+              <p>{bar.name}</p>
+            </div>)
+          }
+        </div>
+        */}
         <div className='result-container'>
           <button id='toggle-view' onClick={()=> history.push('/results-list')}><img src='/images/list-view.png'/></button>
         </div>

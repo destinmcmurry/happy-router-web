@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import history from '../history';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import convertFromMilitary from './utils/convert';
 
 const ResultList = (props) => {
 
@@ -18,16 +19,16 @@ const ResultList = (props) => {
             <h2>Route Details</h2>
             <button id='toggle-view' onClick={()=> history.push('/results-map')}><img src='/images/map-view.png'/></button>
             {
-              route.map(bar =>
-                <div key={bar.id} className='list-item'>
-                  <img src={bar.image}/>
-                  <div>
-                    <h4>{bar.name}</h4>
-                    <p>{bar.happyHours.M.details}</p>
-                    <Link to={`/results-list/single-result/${bar.id}`}><small>see more</small></Link>
-                  </div>
+            route.map(bar =>
+              <div key={bar.id} className='list-item'>
+                <img src={bar.image}/>
+                <div>
+                  <h4>{bar.name}</h4>
+                  <p>{bar.happyHours.M.details}</p>
+                  <p>from {convertFromMilitary(bar.happyHours.M.start)} until {convertFromMilitary(bar.happyHours.M.end)}</p>
+                  <Link to={`/results-list/single-result/${bar.id}`}><small>see more</small></Link>
                 </div>
-              )
+              </div>)
             }
           </div>
           <div className='bottom-right-button'>

@@ -10,18 +10,23 @@ const generateRoute = (bars, loc, start, end) => {
 
   // if there are no matches, will let the user know
   if (!filteredBars.length) return null;
-  // if there are less than 3 matches, just return them
-  if (filteredBars.length <= 3) return filteredBars;
-  // otherwise,
-  // choose 3 at random
-  const indexes = [];
-  while (indexes.length < 3) {
-    let randomNum = Math.floor(Math.random() * (filteredBars.length));
-    if (!indexes.includes(randomNum)) {
-      indexes.push(randomNum);
+
+  // if there are more than 3 matches, choose three at random
+  // order by soonest ending and return 
+  if (filteredBars.length > 3) {
+    const indexes = [];
+    while (indexes.length < 3) {
+      let randomNum = Math.floor(Math.random() * (filteredBars.length));
+      if (!indexes.includes(randomNum)) {
+        indexes.push(randomNum);
+      }
     }
+    const newFiltered = indexes.map(i => filteredBars[i])
+    return orderBars(newFiltered);
   }
-  return indexes.map(i => filteredBars[i])
+
+  return orderBars(filteredBars);
+
 }
 
 // not the best but eh
@@ -35,5 +40,20 @@ const isWithinWindow = (userWindow, barWindow) => {
   return (barWindow[0] <= userWindow[0] && barWindow[1] >= userWindow[0]) || (barWindow[0] >= userWindow[0] && barWindow[0] < userWindow[1])
 }
 
-export default generateRoute;
+// right now orders by earliest end for happy hour window
+// but should also take into account distance?
+const orderBars = bars => {
+  const results = [bars[0]];
+  for (let i = 1; i < bars.length; i++) {
+    if (bars[i].happyHours.M.end <= results[0].happyHours.M.end) {
+      results.unshift(bars[i]);
+    } else if (results[1] && bars[i].happyHours.M.end <= results[1].happyHours.M.end) {
+      results.splice(1,0,bars[i]);
+    } else {
+      results.push(bars[i]);
+    }
+  }
+  return results;
+}
 
+export default generateRoute;

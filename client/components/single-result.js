@@ -20,7 +20,7 @@ const SingleResult = (props) => {
             <p>rating: {bar.rating}</p>
             <p>reviews: {bar.reviews}</p>
             <p>type: {bar.type[0]}</p>
-            <small>website: {bar.website}</small>
+            <small>website: <a href={bar.website}>{bar.website}</a></small>
           </div>
         </div>
       </div>
