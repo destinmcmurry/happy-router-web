@@ -29,6 +29,7 @@ const isNearby = (userCoords, barCoords) => {
   return (Math.abs(userCoords[0]-barCoords[0]) < .01) && (Math.abs(userCoords[1]-barCoords[1]) < .01)
 }
 
+// not actually doing anything right now
 const isWithinWindow = (userWindow, barWindow) => {
   return true;
 }

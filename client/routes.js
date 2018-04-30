@@ -30,6 +30,7 @@ class Routes extends Component {
           isLoggedIn &&
             <Switch>
               <Route path='/account' component={Account} />
+              <Route path='/' component={Home} />
             </Switch>
         }
         <Route component={Login} />

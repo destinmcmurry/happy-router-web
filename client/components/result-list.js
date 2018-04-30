@@ -10,29 +10,45 @@ const ResultList = (props) => {
 
   return (
     <div>
-      <div className='result-container'>
-        <h2>Route Details</h2>
-        <button id='toggle-view' onClick={()=> history.push('/results-map')}><img src='/images/map-view.png'/></button>
-        {
-          route.map(bar =>
-            <div key={bar.id} className='list-item'>
-              <img src={bar.image}/>
-              <div>
-                <h4>{bar.name}</h4>
-                <p>{bar.happyHours.M.details}</p>
-                <Link to={`/results-list/single-result/${bar.id}`}><small>see more</small></Link>
-              </div>
-            </div>
-          )
-        }
-      </div>
-      <div className='bottom-right-button'>
-        <div><button id='in-list' className='back-to-start' onClick={()=> history.push('/home')}>create new route</button></div>
-        {
-          props.isLoggedIn && <button><img src='/images/star.png'/></button>
-        }
-        <button><img src='/images/share.png'/></button>
-      </div>
+    { route 
+      ?
+      (
+        <div>
+          <div className='result-container'>
+            <h2>Route Details</h2>
+            <button id='toggle-view' onClick={()=> history.push('/results-map')}><img src='/images/map-view.png'/></button>
+            {
+              route.map(bar =>
+                <div key={bar.id} className='list-item'>
+                  <img src={bar.image}/>
+                  <div>
+                    <h4>{bar.name}</h4>
+                    <p>{bar.happyHours.M.details}</p>
+                    <Link to={`/results-list/single-result/${bar.id}`}><small>see more</small></Link>
+                  </div>
+                </div>
+              )
+            }
+          </div>
+          <div className='bottom-right-button'>
+            <div><button id='in-list' className='back-to-start' onClick={()=> history.push('/home')}>create new route</button></div>
+            {
+              props.isLoggedIn && <button><img src='/images/star.png'/></button>
+            }
+            <button><img src='/images/share.png'/></button>
+          </div>
+        </div>
+      )
+      :
+      (
+        <div className='searching-page'>
+          <p>Sorry, there weren't any happy hours that matched your search :/</p>
+          <div className='bottom-right-button'>
+            <button id='in-list' className='back-to-start' onClick={()=> history.push('/home')}>back</button>
+          </div>
+        </div>
+      )
+    }
     </div>
   )
 }

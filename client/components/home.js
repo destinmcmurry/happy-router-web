@@ -67,6 +67,12 @@ class Home extends Component {
     history.push('/searching');
   }
 
+  handleGoBack = event => {
+    this.setState({ 
+      displayFirst : true
+    })
+  }
+
   render() {
     return (
       <div>
@@ -93,6 +99,7 @@ class Home extends Component {
         <p>Begin: <input id='num-input' type='number' name='start' value={this.state.start} onChange={this.handleChange} min='0' max='2400' step='100' /></p>
         <p>End: <input id='num-input' type='number' name='end' value={this.state.end} onChange={this.handleChange} min='0' max='2400' step='100' /></p>
         <button disabled={this.state.disabledForTime} onClick={this.handleSubmitTime}>continue</button>
+        <button onClick={this.handleGoBack}>back</button>
         </div>
         )
         }
