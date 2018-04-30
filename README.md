@@ -1,10 +1,12 @@
 # happy-router-web
 
-a web app that when given a location and time frame generates a route of nearby happy hours! 
+a web app that when given a location and time frame generates an optimal route of nearby happy hours!
 
 # future features 
 
 - extra filters including price, type of place (lounge, japanese, etc), and type of happy hour (food / drink / both)
+
+- ability to star single bar/restaurants from a route and shuffle the remaining openings
 
 - user ability to save routes to their profile and share routes with friends via text
 
