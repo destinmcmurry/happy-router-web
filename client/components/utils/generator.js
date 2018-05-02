@@ -1,11 +1,13 @@
-// will have a function to filter through the bars, and select a random group of 3 that match the params
+import getToday from './day';
+let dayOfWeek = getToday();
 
+// filters through the bars, and select a random group of 3 that match the params
 const generateRoute = (bars, loc, start, end) => {
 
-  // use helper functions to filter bars (rn just returning all)
+  // use helper functions to filter bars 
   const filteredBars = bars.filter(bar => {
     return isNearby(loc, bar.location) &&
-    isWithinWindow([start, end], [bar.happyHours.M.start, bar.happyHours.M.end])
+    isWithinWindow([start, end], [bar.happyHours[dayOfWeek].start, bar.happyHours[dayOfWeek].end])
   })
 
   // if there are no matches, will let the user know
@@ -37,17 +39,18 @@ const isNearby = (userCoords, barCoords) => {
 // will need to get day of week
 // and take out all of the hard coded M's
 const isWithinWindow = (userWindow, barWindow) => {
-  return (barWindow[0] <= userWindow[0] && barWindow[1] >= userWindow[0]) || (barWindow[0] >= userWindow[0] && barWindow[0] < userWindow[1])
+  return (barWindow[0] <= userWindow[0] && barWindow[1] > userWindow[0]) || (barWindow[0] >= userWindow[0] && barWindow[0] < userWindow[1])
 }
 
 // right now orders by earliest end for happy hour window
-// but should also take into account distance?
+// but should also take into account distance
 const orderBars = bars => {
   const results = [bars[0]];
   for (let i = 1; i < bars.length; i++) {
-    if (bars[i].happyHours.M.end <= results[0].happyHours.M.end) {
+    if (bars[i].happyHours[dayOfWeek].end <= results[0].happyHours[dayOfWeek].end) {
+      if (bars[i].happyHours[dayOfWeek].end = results[0].happyHours[dayOfWeek].end)
       results.unshift(bars[i]);
-    } else if (results[1] && bars[i].happyHours.M.end <= results[1].happyHours.M.end) {
+    } else if (results[1] && bars[i].happyHours[dayOfWeek].end <= results[1].happyHours[dayOfWeek].end) {
       results.splice(1,0,bars[i]);
     } else {
       results.push(bars[i]);

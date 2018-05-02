@@ -8,8 +8,8 @@ class Home extends Component {
   state = {
     coords: '',
     displayFirst: true,
-    start: 1500,
-    end: 2200,
+    start: '15:00',
+    end: '22:00',
     // priceCap: 4,
     // types: [],
     disabledForLocation: true,
@@ -22,7 +22,7 @@ class Home extends Component {
       container: 'map',
       center: this.props.userLocation || [-73.963, 40.688],
       zoom: 12.25,
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/destinmcmurrry/cjgodot9800002rmlmvlbs0s0'
     });
   }
 
@@ -35,13 +35,19 @@ class Home extends Component {
     if (+this.state.coords.includes(', ')) {
       this.state.disabledForLocation = false;
     }
-    if (this.state.start < 0 || this.state.start > 2400 
-        || this.state.end < 0 || this.state.end > 2400) 
-    {
-      this.state.disabledForTime = true;
-    } else {
-      this.state.disabledForTime = false;
-    }
+    // if (this.state.start < 0 || this.state.start > 2400 
+    //     || this.state.end < 0 || this.state.end > 2400) 
+    // {
+    //   this.state.disabledForTime = true;
+    // } else {
+    //   this.state.disabledForTime = false;
+    // } // if (this.state.start < 0 || this.state.start > 2400 
+    //     || this.state.end < 0 || this.state.end > 2400) 
+    // {
+    //   this.state.disabledForTime = true;
+    // } else {
+    //   this.state.disabledForTime = false;
+    // }
     //-----------------------------------------------
   }
 
@@ -63,7 +69,7 @@ class Home extends Component {
   // -------------------------------------------------
 
   handleSubmitTime = event => {
-    this.props.submitWindow(this.state.start, this.state.end);
+    this.props.submitWindow(Number(this.state.start.split(':').join('')), Number(this.state.end.split(':').join('')));
     history.push('/searching');
   }
 
@@ -95,9 +101,9 @@ class Home extends Component {
         (
         <div className='options-container'>
         <h2>Choose your happy hour window!</h2>
-        <small>military style</small>
-        <p>Begin: <input id='num-input' type='number' name='start' value={this.state.start} onChange={this.handleChange} min='0' max='2400' step='100' /></p>
-        <p>End: <input id='num-input' type='number' name='end' value={this.state.end} onChange={this.handleChange} min='0' max='2400' step='100' /></p>
+        <small>when would you like to be out?</small>
+        <p>Begin: <input id='num-input' type='time' name='start' value={this.state.start} onChange={this.handleChange} min='10:00' max='24:00' step='1:00' /></p>
+        <p>End: <input id='num-input' type='time' name='end' value={this.state.end} onChange={this.handleChange} min='10:00' max='24:00' step='1:00' /></p>
         <button disabled={this.state.disabledForTime} onClick={this.handleSubmitTime}>continue</button>
         <button onClick={this.handleGoBack}>back</button>
         </div>

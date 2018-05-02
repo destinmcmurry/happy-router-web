@@ -4,6 +4,8 @@ import history from '../history';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import convertFromMilitary from './utils/convert';
+import getToday from './utils/day';
+const dayOfWeek = getToday();
 
 const ResultList = (props) => {
 
@@ -24,8 +26,8 @@ const ResultList = (props) => {
                 <img src={bar.image}/>
                 <div>
                   <h4>{bar.name}</h4>
-                  <p>{bar.happyHours.M.details}</p>
-                  <p>from {convertFromMilitary(bar.happyHours.M.start)} until {convertFromMilitary(bar.happyHours.M.end)}</p>
+                  <p>{bar.happyHours[dayOfWeek].details}</p>
+                  <p>from {convertFromMilitary(bar.happyHours[dayOfWeek].start)} until {convertFromMilitary(bar.happyHours[dayOfWeek].end)}</p>
                   <Link to={`/results-list/single-result/${bar.id}`}><small>see more</small></Link>
                 </div>
               </div>)
