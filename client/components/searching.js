@@ -4,6 +4,7 @@ import GifPlayer from 'react-gif-player'
 import history from '../history'
 import { setNewRoute } from '../store'
 import generateRoute from './utils/generator'
+import convertFromMilitary from './utils/convert'
 
 class Searching extends Component {
 
@@ -27,7 +28,7 @@ class Searching extends Component {
           setTimeout(()=>history.push('/results-map'), 3000) &&
             <div>
               <GifPlayer id='wheel' gif='https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif' autoplay={true}/>
-              <p>{`Searching for happy hours near coordinates [${loc[1]}, ${loc[0]}] and between the window of ${start} and ${end}`}</p>
+              <p>{`Searching for happy hours near coordinates [${loc[1]}, ${loc[0]}] and between the window of ${convertFromMilitary(start)} and ${convertFromMilitary(end)}`}</p>
             </div>
           }
         </div>

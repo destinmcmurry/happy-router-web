@@ -277,7 +277,7 @@ const bars = [
     id: 8,
     name: 'The Wooly Public',
     type: ['American(New)', 'Cocktail Bars', 'Wine Bars'],
-    location: [-74.008416, 40.712316],
+    location: [-74.006529, 40.708231],
     image: '/images/wooly.jpg',
     price: '$$',
     rating: 4,

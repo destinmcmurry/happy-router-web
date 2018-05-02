@@ -24,8 +24,8 @@ class AddNew extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Want to submit a happy hour?</h3>
+      <div className='hhform'>
+        <h4>Want to submit a happy hour?</h4>
         <p>fill out this form!</p>
         <label>name</label><input/>
         <label>location</label><input/>

@@ -4,13 +4,18 @@ a web app that when given a location and time frame generates an optimal route o
 
 # future features 
 
+* BIG REFACTOR
+  - users can choose a start and end point and happy hours are plotted along this route
+
+- map markers are interactive and display name of place (and link to place)
+
 - extra filters including price, type of place (lounge, japanese, etc), and type of happy hour (food / drink / both)
 
 - ability to star single bar/restaurants from a route and shuffle the remaining openings
 
 - user ability to save routes to their profile and share routes with friends via text
 
-- restaurant/bar owners to post their happy hours to the site
+- restaurant/bar owners to post their happy hours to the site 
 
 ~ happy router for mobile is currently under construction ~
 

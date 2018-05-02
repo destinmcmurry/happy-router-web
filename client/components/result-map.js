@@ -13,18 +13,18 @@ class ResultMap extends Component {
 
       mapboxgl.accessToken = 'pk.eyJ1IjoiZGVzdGlubWNtdXJycnkiLCJhIjoiY2plenRxaGw3MGdsNTJ3b2htMGRydWc3aiJ9.ycslnjgv2J9VZGZHT8EoIw';
       const map = new mapboxgl.Map({
-        container: 'map',
+        container: 'result-map',
         center: userLocation,
-        zoom: 14,
-        style: 'mapbox://styles/mapbox/streets-v10'
+        zoom: 15,
+        style: 'mapbox://styles/destinmcmurrry/cjgodot9800002rmlmvlbs0s0'
       });
       
       map.on('load', () => {
         map.loadImage('/images/marker.png', (error, image) => {
             if (error) throw error;
-            map.addImage('you-are-here', image);
+            map.addImage('start', image);
             map.addLayer({
-              id: ''+userLocation+'-marker',
+              id: 'Markers',
               type: 'symbol',
               source: {
                 type: 'geojson',
@@ -36,16 +36,26 @@ class ResultMap extends Component {
                     'coordinates': userLocation }}]}
               },
               layout: {
-                'icon-image': 'you-are-here',
+                'icon-image': 'start',
+                'icon-size': .1
               }
             });
           });
           
           const coordsArr = [];
+          const nameArr = [];
           barsToMap.forEach(bar => {
             coordsArr.push(bar.location)
+            nameArr.push(bar.name)
           });
-          coordsArr.forEach(coords => makeBarMarker(map, coords))
+          map.loadImage('/images/bar-icon.png', (error, image) => {
+            if (error) throw error;
+            map.addImage('bar', image);
+          for (let i = 0; i < coordsArr.length; i++) {
+            makeBarMarker(map, coordsArr[i], nameArr[i]);
+          }
+        
+          })
 
           map.addLayer({
             'id': 'route',
@@ -61,20 +71,9 @@ class ResultMap extends Component {
                       }
                     }
                 },
-                'layout': {
-                    'line-join': 'round',
-                    'line-cap': 'round'
-                },
                 'paint': {
-                  'line-color': '#72ccb5',
-                  'line-width': {
-                  'base': 1.5,
-                  'stops': [
-                      [14, 5],
-                      [18, 20],
-                  ],
-              },
-                  'line-dasharray': [0.5, 1.5]
+                  'line-color': '#79cfee',
+                  'line-width': 1.5
               }
             });
 
@@ -92,21 +91,7 @@ class ResultMap extends Component {
 
     return (
       <div className='map-container'>
-        <div id='map'></div>
-        {/*
-        <div className='thumbnail-container'>
-          <div className='thumbnail'>
-            <p>your location ></p>
-          </div>
-          {
-          barsToMap.map(bar =>
-            <div key={bar.id} className='thumbnail'>
-              <img src={bar.img}/>
-              <p>{bar.name}</p>
-            </div>)
-          }
-        </div>
-        */}
+        <div id='result-map'></div>
         <div className='result-container'>
           <button id='toggle-view' onClick={()=> history.push('/results-list')}><img src='/images/list-view.png'/></button>
         </div>
