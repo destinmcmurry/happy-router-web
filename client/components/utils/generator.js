@@ -24,10 +24,9 @@ const generateRoute = (bars, loc, start, end) => {
       }
     }
     const newFiltered = indexes.map(i => filteredBars[i])
-    return orderBars(newFiltered);
+    return orderBars(newFiltered, loc);
   }
-
-  return orderBars(filteredBars);
+  return orderBars(filteredBars, loc);
 
 }
 
@@ -36,24 +35,24 @@ const isNearby = (userCoords, barCoords) => {
   return (Math.abs(userCoords[0]-barCoords[0]) < .01) && (Math.abs(userCoords[1]-barCoords[1]) < .01)
 }
 
-// will need to get day of week
-// and take out all of the hard coded M's
 const isWithinWindow = (userWindow, barWindow) => {
   return (barWindow[0] <= userWindow[0] && barWindow[1] > userWindow[0]) || (barWindow[0] >= userWindow[0] && barWindow[0] < userWindow[1])
 }
 
-// right now orders by earliest end for happy hour window
-// but should also take into account distance
-const orderBars = bars => {
-  const results = [bars[0]];
-  for (let i = 1; i < bars.length; i++) {
-    if (bars[i].happyHours[dayOfWeek].end <= results[0].happyHours[dayOfWeek].end) {
-      if (bars[i].happyHours[dayOfWeek].end = results[0].happyHours[dayOfWeek].end)
-      results.unshift(bars[i]);
-    } else if (results[1] && bars[i].happyHours[dayOfWeek].end <= results[1].happyHours[dayOfWeek].end) {
-      results.splice(1,0,bars[i]);
-    } else {
+// will need to be updated to be organized along a route.. 
+const orderBars = (bars, userCoords) => {
+  const results = [];
+  let i = 0;
+  while (results.length < 3) {
+    if (!results.length || bars[i].happyHours[dayOfWeek].end > results[results.length-1].happyHours[dayOfWeek].end) {
       results.push(bars[i]);
+      i++;
+    } else if (bars[i].happyHours[dayOfWeek].end < results[0].happyHours[dayOfWeek].end) {
+      results.unshift(bars[i]);
+      i++;
+    } else {
+      results.splice(1,0,bars[i]);
+      i++;
     }
   }
   return results;
