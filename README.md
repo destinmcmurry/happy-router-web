@@ -1,8 +1,16 @@
 # happy-router-web
 
-a web app that when given a location and time frame generates an optimal route of nearby happy hours!
+why pub crawl when you can happy route?
 
 ![alt text](https://raw.githubusercontent.com/destinmcmurry/happy-router-web/master/public/images/display1.png)
+
+![alt text](https://raw.githubusercontent.com/destinmcmurry/happy-router-web/master/public/images/display2.png)
+
+![alt text](https://raw.githubusercontent.com/destinmcmurry/happy-router-web/master/public/images/display3.png)
+
+# description
+
+HappyRouter is a mobile responsive web app that generates a randomized route of restaurant and bar specials based on a user's input. It does all of the research and planning for you by searching for active happy hours that are nearby and fall within your window, and ordering a route (max 3 places) by the soonest ending happy hour
 
 # future features 
 
