@@ -2,6 +2,8 @@
 
 a web app that when given a location and time frame generates an optimal route of nearby happy hours!
 
+![alt text](https://raw.githubusercontent.com/destinmcmurry/happy-router-web/master/public/images/display1.png)
+
 # future features 
 
 * BIG REFACTOR
