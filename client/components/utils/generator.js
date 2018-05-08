@@ -24,9 +24,9 @@ const generateRoute = (bars, loc, start, end) => {
       }
     }
     const newFiltered = indexes.map(i => filteredBars[i])
-    return orderBars(newFiltered, loc);
+    return orderBars(newFiltered);
   }
-  return orderBars(filteredBars, loc);
+  return orderBars(filteredBars);
 
 }
 
@@ -40,7 +40,7 @@ const isWithinWindow = (userWindow, barWindow) => {
 }
 
 // will need to be updated to be organized along a route.. 
-const orderBars = (bars, userCoords) => {
+const orderBars = (bars) => {
   const results = [];
   let i = 0;
   while (results.length < 3) {
